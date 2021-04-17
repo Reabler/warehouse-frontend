@@ -1,16 +1,15 @@
 import React from 'react';
-import Header from '../components/Header';
 
-const Home = () => {
+const ProductCategories = () => {
   return (
     <React.Fragment>
       <main>
         <div className="max-w-7xl mx-auto py-6 sm:px-6 lg:px-8">
-          <h2>Home</h2>
+          <h2>ProductCategories</h2>
         </div>
       </main>
     </React.Fragment>
   );
 };
 
-export default Home
+export default ProductCategories

@@ -1,0 +1,25 @@
+.tableHead {
+  @apply
+  bg-transparent 
+  text-gray-500
+  border-b
+  border-gray-300
+}
+.tableRow {
+  @apply
+    text-black
+}
+  .tableRow:hover {
+    @apply 
+    bg-white
+    bg-opacity-20
+  }
+  .tableRowEven {
+    @apply 
+      bg-transparent
+  }
+  .tableRowOdd {
+    @apply
+      bg-white
+      bg-opacity-10
+  }

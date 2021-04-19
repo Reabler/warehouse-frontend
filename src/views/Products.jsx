@@ -4,6 +4,12 @@ import Header from '../components/Header';
 import Drawer from '../components/Drawer/Drawer';
 import { getProducts } from '../store/reducers/productsReducer';
 import ProductDetailsPreview from './Products/ProductDetailsPreview';
+import Table from '../components/Table/Table';
+import TableHead from '../components/Table/TableHead';
+import TableBody from '../components/Table/TableBody';
+import TableRow from '../components/Table/TableRow';
+import TableCell from '../components/Table/TableCell';
+import { ViewIcon } from '../components/Icons/Buttons';
 
 const Products = () => {
   const products = useSelector(state => state.products)
@@ -31,86 +37,49 @@ const Products = () => {
         </Drawer>        
         <div className="max-w-full mx-auto">
           <Header title="Products" />
-          <div className="flex flex-col">
-            <div className="overflow-x-auto">
-              <div className="align-middle inline-block min-w-full">
-                <div className="shadow overflow-hidden border-b border-gray-200">
-                  <table className="min-w-full divide-y divide-gray-200">
-                    <thead className="bg-gray-50 text-gray-500">
-                      <tr>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                        >
-                          Brand
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 w-1/2 text-left text-xs font-medium uppercase tracking-wider"
-                        >
-                          Title
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                        >
-                          Articles
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                        >
-                          Stock
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                        >
-                          Categories
-                        </th>
-                        <th
-                          scope="col"
-                          className="px-6 py-3 text-left text-xs font-medium uppercase tracking-wider"
-                        >
-                          Visible
-                        </th>
-                        <th scope="col" className="relative px-6 py-3">
-                          <span className="sr-only">Edit</span>
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      {products && products.length && products.map((item, i) => (
-                        <tr key={item._id} className={`${i % 2 === 0 ? 'bg-white' : 'bg-gray-50'} hover:bg-gray-100 text-black`}>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm">{item.brand}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm font-medium">{item.title}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm">{item.articles.length}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm">{item.stockCount}</td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm truncate">
-                            {item?.categories.map((category, cI) => {
-                              return (
-                                <a key={category._id} href="#" className="text-xs text-black font-semibold bg-gray-100 p-1 rounded">{category.name}</a>
-                              )
-                            })}
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-sm">
-                            <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
-                            </svg>                            
-                          </td>
-                          <td className="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                            <a onClick={() => showProductDetails(item?._id)} className="text-indigo-600 hover:text-indigo-900">
-                              View
-                            </a>
-                          </td>
-                        </tr>
-                      ))}
-                    </tbody>
-                  </table>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Table>
+            <TableHead
+              cols={[
+                "Brand",
+                "Title",
+                "Articles",
+                "Stock",
+                "Categories",
+                "Visible",
+                ""
+              ]}
+            />
+              <TableBody>
+                {products && products.length && products.map((item, i) => (
+                  <TableRow
+                    key={item._id}
+                    even={i % 2 === 0}
+                  >
+                    <TableCell>{item.brand}</TableCell>
+                    <TableCell>{item.title}</TableCell>
+                    <TableCell>{item.articles.length}</TableCell>
+                    <TableCell>{item.stockCount}</TableCell>
+                    <TableCell>
+                      {item?.categories.map((category, cI) => {
+                        return (
+                          <a key={category._id} href="#" className="text-xs text-black font-semibold bg-gray-100 p-1 rounded">{category.name}</a>
+                        )
+                      })}
+                    </TableCell>
+                    <TableCell>
+                      <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6 text-green-500" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    </TableCell>
+                    <TableCell>
+                      <a onClick={() => showProductDetails(item?._id)} className="text-black hover:text-brandColor">
+                        <ViewIcon />
+                      </a>
+                    </TableCell>
+                  </TableRow>
+                ))}
+            </TableBody>
+          </Table>
 
         </div>
       </main>

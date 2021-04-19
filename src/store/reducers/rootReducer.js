@@ -4,11 +4,13 @@ import { combineReducers, createStore } from 'redux'
 import { productsReducer } from './productsReducer'
 import { articlesReducer } from './articlesReducer'
 import { vendorsReducer } from './vendorsReducer'
+import { campaignsReducer } from './campaignsReducer'
 
 const rootReducer = combineReducers({
   products: productsReducer,
   articles: articlesReducer,
-  vendors: vendorsReducer
+  vendors: vendorsReducer,
+  campaigns: campaignsReducer
 })
 
 export default rootReducer

@@ -9,7 +9,11 @@ import Sidebar from './components/Sidebar/Sidebar';
 import Products from './views/Products';
 import Articles from './views/Articles';
 import Vendors from './views/Vendors';
+import Campaigns from './views/Campaigns/Campaigns';
 import ProductCategories from './views/ProductCategories';
+import Orders from './views/Orders/Orders';
+import RMA from './views/RMA/RMA';
+import Reviews from './views/Reviews/Reviews';
 
 const App = () => {
   return (    
@@ -24,6 +28,15 @@ const App = () => {
               <Route exact path="/">
                 <Home />
               </Route>
+              <Route path="/orders">
+                <Orders />
+              </Route>
+              <Route path="/rma">
+                <RMA />
+              </Route>
+              <Route path="/reviews">
+                <Reviews />
+              </Route>
               <Route path="/products">
                 <Products />
               </Route>
@@ -32,6 +45,9 @@ const App = () => {
               </Route>
               <Route path="/vendors">
                 <Vendors />
+              </Route>
+              <Route path="/campaigns">
+                <Campaigns />
               </Route>
               <Route path="/product-categories">
                 <ProductCategories />

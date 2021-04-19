@@ -30,10 +30,11 @@ module.exports = {
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
+      brandColor: colors.blue[500],
 
       black: colors.black,
       white: colors.white,
-      gray: colors.coolGray,
+      gray: colors.trueGray,
       red: colors.red,
       yellow: colors.amber,
       green: colors.emerald,
